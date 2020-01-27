@@ -58,11 +58,11 @@ public class ContactDbAdapter {
      * Database creation sql statement
      */
     private static final String DATABASE_CREATE =
-            "create table tasks (_id integer primary key autoincrement, "
+            "create table contact (_id integer primary key autoincrement, "
                     + "new_nom text not null, " + "new_prenom text not null);";
 
     private static final String DATABASE_NAME = "contacts";
-    private static final String DATABASE_TABLE = "contacts";
+    private static final String DATABASE_TABLE = "contact";
     private static final int DATABASE_VERSION = 2;
 
     private final Context mCtx;
@@ -83,7 +83,7 @@ public class ContactDbAdapter {
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
                     + newVersion + ", which will destroy all old data");
-            db.execSQL("DROP TABLE IF EXISTS contacts");
+            db.execSQL("DROP TABLE IF EXISTS contact");
             onCreate(db);
         }
     }
@@ -158,7 +158,7 @@ public class ContactDbAdapter {
      */
     public Cursor fetchAllContacts() {
 
-        return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_NOM, KEY_PRENOM}, null, null, null, null, null);
+        return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_NOM, KEY_PRENOM}, null, null, null, null, KEY_PRENOM);
     }
 
     /**

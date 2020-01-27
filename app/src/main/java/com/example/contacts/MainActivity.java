@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
         fillData();
     }
 
-    public  void menzo(){}
 
     public void openActivityCreateContact(){
         Intent intent = new Intent(this, CreateContactActivity.class);
@@ -71,21 +70,19 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void fillData() {
+    public void fillData() {
         // Get all of the notes from the database and create the item list
         Cursor c = db.fetchAllContacts();
         startManagingCursor(c);
 
-        String[] from = new String[] { ContactDbAdapter.KEY_NOM, ContactDbAdapter.KEY_PRENOM,  };
-        int[] to = new int[] { R.id.text1 };
+        String[] from = new String[] { ContactDbAdapter.KEY_PRENOM ,ContactDbAdapter.KEY_NOM };
+        int[] to = new int[] { R.id.text1 , R.id.text2 };
 
-        final ListView list_view_task = (ListView) findViewById(R.id.list_view_contacts);
+        final ListView list_view_contacts = (ListView) findViewById(R.id.list_view_contacts);
 
         SimpleCursorAdapter contacts =
                 new SimpleCursorAdapter(this, R.layout.contacts_row, c, from, to, 0);
-        list_view_task.setAdapter(contacts);
-
-
+        list_view_contacts.setAdapter(contacts);
     }
 
 
