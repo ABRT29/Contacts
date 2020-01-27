@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         fillData();
     }
 
-
+    public  void menzo(){}
 
     public void openActivityCreateContact(){
         Intent intent = new Intent(this, CreateContactActivity.class);
