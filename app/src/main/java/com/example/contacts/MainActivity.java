@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        final ListView list_view_task = (ListView) findViewById(R.id.list_view_contacts);
+        final ListView list_view_contacts = (ListView) findViewById(R.id.list_view_contacts);
 
         db = new ContactDbAdapter(this);
         db.open();
