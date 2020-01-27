@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Contacts</string>
+    <string name="action_settings">Settings</string>
+    <string name="textCreateContact">Créer un contact</string>
+    <string name="CreateContactNom">Nom</string>
+    <string name="CreateContactPrenom">Prénom</string>
+    <string name="CreateContactAdresse1">Adresse</string>
+    <string name="CreateContactAdresse2">Complément d\'adresse</string>
+    <string name="CreacteContactCP">Code postale</string>
+    <string name="CreateContactVille">Ville</string>
+    <string name="CreateContactTelephone">Téléphone</string>
+    <string name="CreateContactEmail">E-mail</string>
+    <string name="ButtonAjouter">Créer le contact</string>
+</resources>
