@@ -10,10 +10,8 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5e87963-4c0a-4bdd-9925-0aa9e0c6b0d1" name="Default Changelist" comment="init">
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
+    <list default="true" id="a5e87963-4c0a-4bdd-9925-0aa9e0c6b0d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/contacts/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/contacts/MainActivity.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +49,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/contacts/ContactDbAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2025">
+            <state>
               <caret line="141" column="7" selection-start-line="141" selection-start-column="7" selection-end-line="141" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -63,7 +61,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/contacts/CreateContactActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
+            <state relative-caret-position="90">
               <caret line="30" column="56" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
             </state>
           </provider>
@@ -72,8 +70,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/contacts/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="44" column="24" selection-start-line="44" selection-start-column="24" selection-end-line="44" selection-end-column="24" />
+            <state relative-caret-position="375">
+              <caret line="44" selection-start-line="44" selection-end-line="44" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -296,7 +294,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580117234382</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="init">
+      <created>1580118916175</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1580118916175</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -304,8 +309,8 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.24964234" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49574107" visible="true" weight="0.19527897" />
-      <window_info id="Structure" order="2" sideWeight="0.50425893" side_tool="true" visible="true" weight="0.19527897" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49619773" visible="true" weight="0.19527897" />
+      <window_info id="Structure" order="2" sideWeight="0.5038023" side_tool="true" visible="true" weight="0.19527897" />
       <window_info id="Favorites" order="3" side_tool="true" weight="0.3297568" />
       <window_info id="Build Variants" order="4" side_tool="true" weight="0.3297568" />
       <window_info id="Image Layers" order="5" />
@@ -317,9 +322,9 @@
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50214595" side_tool="true" visible="true" weight="0.2522293" />
-      <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.4985694" weight="0.3299363" />
-      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49785408" visible="true" weight="0.2522293" />
+      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50214595" side_tool="true" visible="true" weight="0.3299363" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="6" sideWeight="0.49785408" visible="true" weight="0.3299363" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49785408" weight="0.2522293" />
       <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
@@ -489,7 +494,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/contacts/ContactDbAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2025">
+        <state>
           <caret line="141" column="7" selection-start-line="141" selection-start-column="7" selection-end-line="141" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -499,15 +504,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/contacts/CreateContactActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
+        <state relative-caret-position="90">
           <caret line="30" column="56" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/contacts/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="44" column="24" selection-start-line="44" selection-start-column="24" selection-end-line="44" selection-end-column="24" />
+        <state relative-caret-position="375">
+          <caret line="44" selection-start-line="44" selection-end-line="44" selection-end-column="25" />
         </state>
       </provider>
     </entry>
