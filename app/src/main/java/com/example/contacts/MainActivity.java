@@ -13,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
@@ -39,14 +40,42 @@ public class MainActivity extends AppCompatActivity {
 
         db = new ContactDbAdapter(this);
         db.open();
+
         fillData();
+
+
+        list_view_contacts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
+                /**
+                 * permet de faire passer l'ID de cette activité (MainActivity) vers l'activité ShowContactActivity
+                 */
+                //Intent intent = new Intent(getApplicationContext(), ShowContactActivity.class);
+                //intent.putExtra("Id", id);
+                //startActivity(intent);
+
+                /**
+                 * Code à copier/coller dans l'activité ShowContactActivity afin de réceptionner l'ID
+                 */
+                //Intent intent = getIntent();
+                //int id = intent.getExtras().getInt("Id");
+                //Cursor c = db.fetchContact(id);
+                //startManagingCursor(c);
+
+            }
+        });
     }
 
-
+    /**
+     * Redirection vers l'activité : CreateContact
+     */
     public void openActivityCreateContact(){
         Intent intent = new Intent(this, CreateContactActivity.class);
         startActivity(intent);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -71,21 +100,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void fillData() {
-        // Get all of the notes from the database and create the item list
         Cursor c = db.fetchAllContacts();
         startManagingCursor(c);
 
-        String[] from = new String[] { ContactDbAdapter.KEY_PRENOM ,ContactDbAdapter.KEY_NOM };
-        int[] to = new int[] { R.id.text1 , R.id.text2 };
-
         final ListView list_view_contacts = (ListView) findViewById(R.id.list_view_contacts);
+
+
+        String[] from = new String[] { ContactDbAdapter.KEY_PRENOM, ContactDbAdapter.KEY_NOM };
+        int[] to = new int[] { R.id.text1, R.id.text2 };
 
         SimpleCursorAdapter contacts =
                 new SimpleCursorAdapter(this, R.layout.contacts_row, c, from, to, 0);
         list_view_contacts.setAdapter(contacts);
     }
-
-
 
 
 }

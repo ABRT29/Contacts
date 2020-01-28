@@ -33,9 +33,4 @@
         app:backgroundTint="@color/colorPrimary"
         app:srcCompat="@drawable/addcharacter" />
 
-    <ListView
-        android:id="@+id/list_view_contacts"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

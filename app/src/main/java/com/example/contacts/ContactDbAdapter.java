@@ -59,7 +59,7 @@ public class ContactDbAdapter {
      */
     private static final String DATABASE_CREATE =
             "create table contact (_id integer primary key autoincrement, "
-                    + "new_nom text not null, " + "new_prenom text not null);";
+                    + "new_nom text not null, new_prenom text not null);";
 
     private static final String DATABASE_NAME = "contacts";
     private static final String DATABASE_TABLE = "contact";
@@ -158,7 +158,8 @@ public class ContactDbAdapter {
      */
     public Cursor fetchAllContacts() {
 
-        return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_NOM, KEY_PRENOM}, null, null, null, null, KEY_PRENOM);
+        return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_NOM,
+                KEY_PRENOM}, null, null, null, null, KEY_PRENOM);
     }
 
     /**
@@ -198,4 +199,5 @@ public class ContactDbAdapter {
 
         return mDb.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
     }
+
 }
