@@ -55,7 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/new_adresse"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -66,14 +66,14 @@
         android:background="@drawable/edit_custom"
         android:ems="10"
         android:hint="@string/CreateContactAdresse1"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_nom"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/new_nom" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/new_complement"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -87,11 +87,11 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3"
+        app:layout_constraintTop_toBottomOf="@+id/new_adresse"
         android:importantForAutofill="no" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/new_codepostale"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -102,14 +102,14 @@
         android:background="@drawable/edit_custom"
         android:ems="10"
         android:hint="@string/CreacteContactCP"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/editText6"
+        android:importantForAutofill="no"
+        android:inputType="textShortMessage|number|textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/new_ville"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/new_complement" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/new_ville"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -122,12 +122,12 @@
         android:hint="@string/CreateContactVille"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText5"
-        app:layout_constraintTop_toBottomOf="@+id/editText4"
+        app:layout_constraintStart_toEndOf="@+id/new_codepostale"
+        app:layout_constraintTop_toBottomOf="@+id/new_complement"
         android:importantForAutofill="no" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/new_telephone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -138,14 +138,14 @@
         android:background="@drawable/edit_custom"
         android:ems="10"
         android:hint="@string/CreateContactTelephone"
-        android:inputType="textPersonName"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName|phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText5"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/new_codepostale" />
 
     <EditText
-        android:id="@+id/editText8"
+        android:id="@+id/new_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -156,11 +156,11 @@
         android:background="@drawable/edit_custom"
         android:ems="10"
         android:hint="@string/CreateContactEmail"
-        android:inputType="textPersonName"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName|textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText7"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/new_telephone" />
 
     <Button
         android:id="@+id/button"
@@ -176,6 +176,6 @@
         android:textAllCaps="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText8" />
+        app:layout_constraintTop_toBottomOf="@+id/new_email" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

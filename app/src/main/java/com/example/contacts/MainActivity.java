@@ -48,22 +48,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-
                 /**
                  * permet de faire passer l'ID de cette activité (MainActivity) vers l'activité ShowContactActivity
                  */
                 Intent i = new Intent(MainActivity.this, ShowContactActivity.class);
                 i.putExtra("Id", id);
                 startActivity(i);
-
-                /**
-                 * Code à copier/coller dans l'activité ShowContactActivity afin de réceptionner l'ID
-                 */
-                //Intent intent = getIntent();
-                //int id = intent.getExtras().getInt("Id");
-                //Cursor c = db.fetchContact(id);
-                //startManagingCursor(c);
-
             }
         });
     }

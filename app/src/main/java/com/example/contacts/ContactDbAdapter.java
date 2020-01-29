@@ -39,13 +39,13 @@ public class ContactDbAdapter {
     public static final String KEY_NOM = "new_nom";
     public static final String KEY_PRENOM = "new_prenom";
 
-    public static final String KEY_ADRESSE = "adresse";
-    public static final String KEY_COMPLEMENT = "complement";
-    public static final String KEY_CODEPOSTALE = "codepostale";
-    public static final String KEY_VILLE = "ville";
+    public static final String KEY_ADRESSE = "new_adresse";
+    public static final String KEY_COMPLEMENT = "new_complement";
+    public static final String KEY_CODEPOSTALE = "new_codepostale";
+    public static final String KEY_VILLE = "new_ville";
 
-    public static final String KEY_TELEPHONE = "telephone";
-    public static final String KEY_EMAIL = "email";
+    public static final String KEY_TELEPHONE = "new_telephone";
+    public static final String KEY_EMAIL = "new_email";
 
 
 
@@ -59,7 +59,7 @@ public class ContactDbAdapter {
      */
     private static final String DATABASE_CREATE =
             "create table contact (_id integer primary key autoincrement, "
-                    + "new_nom text not null, new_prenom text not null);";
+                    + "new_nom text not null, new_prenom text not null, new_adresse text not null, new_complement text not null, new_codepostale text not null, new_ville text not null, new_telephone text not null, new_email text not null);";
 
     private static final String DATABASE_NAME = "contacts";
     private static final String DATABASE_TABLE = "contact";
@@ -125,11 +125,20 @@ public class ContactDbAdapter {
      *
      * @return rowId or -1 if failed
      */
-    public long createContact(String new_nom, String new_prenom) {
+    public long createContact(String new_nom, String new_prenom, String new_adresse, String new_complement, String new_codepostale, String new_ville, String new_telephone, String new_email) {
+
         ContentValues initialValues = new ContentValues();
 
         initialValues.put(KEY_NOM, new_nom);
         initialValues.put(KEY_PRENOM, new_prenom);
+
+        initialValues.put(KEY_ADRESSE, new_adresse);
+        initialValues.put(KEY_COMPLEMENT, new_complement);
+        initialValues.put(KEY_CODEPOSTALE, new_codepostale);
+        initialValues.put(KEY_VILLE, new_ville);
+
+        initialValues.put(KEY_TELEPHONE, new_telephone);
+        initialValues.put(KEY_EMAIL, new_email);
 
         return mDb.insert(DATABASE_TABLE, null, initialValues);
     }
@@ -159,7 +168,7 @@ public class ContactDbAdapter {
     public Cursor fetchAllContacts() {
 
         return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_NOM,
-                KEY_PRENOM}, null, null, null, null, KEY_PRENOM);
+                KEY_PRENOM }, null, null, null, null, KEY_PRENOM);
     }
 
     /**
@@ -174,7 +183,7 @@ public class ContactDbAdapter {
         Cursor mCursor =
 
                 mDb.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,
-                                KEY_NOM, KEY_PRENOM}, KEY_ROWID + "=" + rowId, null,
+                                KEY_NOM, KEY_PRENOM, KEY_ADRESSE, KEY_COMPLEMENT, KEY_CODEPOSTALE, KEY_VILLE, KEY_TELEPHONE, KEY_EMAIL}, KEY_ROWID + "=" + rowId, null,
                         null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -189,13 +198,20 @@ public class ContactDbAdapter {
      * values passed in
      *
      * @param rowId id of note to update
-     * @param nom value to set note title to
      * @return true if the note was successfully updated, false otherwise
      */
-    public boolean updateContact(long rowId, String nom, String prenom) {
+    public boolean updateContact(long rowId, String new_nom, String new_prenom, String new_adresse, String new_complement, String new_codepostale, String new_ville, String new_telephone, String new_email) {
         ContentValues args = new ContentValues();
-        args.put(KEY_NOM, nom);
-        args.put(KEY_PRENOM, prenom);
+        args.put(KEY_NOM, new_nom);
+        args.put(KEY_PRENOM, new_prenom);
+        args.put(KEY_NOM, new_nom);
+        args.put(KEY_PRENOM, new_prenom);
+        args.put(KEY_ADRESSE, new_adresse);
+        args.put(KEY_COMPLEMENT, new_complement);
+        args.put(KEY_CODEPOSTALE, new_codepostale);
+        args.put(KEY_VILLE, new_ville);
+        args.put(KEY_TELEPHONE, new_telephone);
+        args.put(KEY_EMAIL, new_email);
 
         return mDb.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
     }
