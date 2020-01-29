@@ -52,9 +52,9 @@ public class MainActivity extends AppCompatActivity {
                 /**
                  * permet de faire passer l'ID de cette activité (MainActivity) vers l'activité ShowContactActivity
                  */
-                //Intent intent = new Intent(getApplicationContext(), ShowContactActivity.class);
-                //intent.putExtra("Id", id);
-                //startActivity(intent);
+                Intent i = new Intent(MainActivity.this, ShowContactActivity.class);
+                i.putExtra("Id", id);
+                startActivity(i);
 
                 /**
                  * Code à copier/coller dans l'activité ShowContactActivity afin de réceptionner l'ID
