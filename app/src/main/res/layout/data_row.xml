@@ -7,33 +7,34 @@
 
     <TextView
         android:id="@+id/data_prenom"
-        android:layout_width="363dp"
-        android:layout_height="19dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentLeft="false"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="91dp"
-        android:layout_marginLeft="91dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="69dp"
-        android:layout_marginRight="69dp" />
+        android:layout_alignParentRight="false"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp" />
 
     <TextView
         android:id="@+id/data_nom"
-        android:layout_width="363dp"
-        android:layout_height="19dp"
+        android:layout_width="326dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/data_prenom"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="49dp"
-        android:layout_marginLeft="49dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="47dp"
-        android:layout_marginRight="47dp" />
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp" />
+
 
     <TextView
         android:id="@+id/data_adresse"
@@ -44,11 +45,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="67dp"
-        android:layout_marginEnd="63dp"
-        android:layout_marginRight="63dp" />
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp" />
 
     <TextView
         android:id="@+id/data_complement"
@@ -59,11 +60,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="34dp"
-        android:layout_marginLeft="34dp"
-        android:layout_marginTop="97dp"
-        android:layout_marginEnd="79dp"
-        android:layout_marginRight="79dp" />
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp" />
 
     <TextView
         android:id="@+id/data_codepostale"
@@ -74,11 +75,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="141dp"
-        android:layout_marginEnd="94dp"
-        android:layout_marginRight="94dp" />
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp" />
 
     <TextView
         android:id="@+id/data_ville"
@@ -89,11 +90,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="75dp"
-        android:layout_marginLeft="75dp"
-        android:layout_marginTop="182dp"
-        android:layout_marginEnd="133dp"
-        android:layout_marginRight="133dp" />
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp" />
 
     <TextView
         android:id="@+id/data_telephone"
@@ -104,11 +105,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="89dp"
-        android:layout_marginLeft="89dp"
-        android:layout_marginTop="214dp"
-        android:layout_marginEnd="151dp"
-        android:layout_marginRight="151dp" />
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="215dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp" />
 
     <TextView
         android:id="@+id/data_email"
@@ -119,10 +120,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="107dp"
-        android:layout_marginLeft="107dp"
-        android:layout_marginTop="249dp"
-        android:layout_marginEnd="109dp"
-        android:layout_marginRight="109dp" />
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp" />
 
 </RelativeLayout>

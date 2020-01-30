@@ -35,7 +35,7 @@ public class ShowContactActivity extends AppCompatActivity {
         Cursor c = db.fetchContact(id);
         startManagingCursor(c);
 
-        final ListView list_view_data = (ListView) findViewById(R.id.list_view_data);
+        final ListView list_view_data = (ListView) findViewById(R.id.list_view_contacts);
 
 
         String[] from = new String[] { ContactDbAdapter.KEY_PRENOM, ContactDbAdapter.KEY_NOM, ContactDbAdapter.KEY_ADRESSE, ContactDbAdapter.KEY_COMPLEMENT, ContactDbAdapter.KEY_CODEPOSTALE, ContactDbAdapter.KEY_VILLE, ContactDbAdapter.KEY_TELEPHONE, ContactDbAdapter.KEY_EMAIL };

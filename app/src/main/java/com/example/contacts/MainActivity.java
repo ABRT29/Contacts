@@ -77,11 +77,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreateContextMenu(menu, v, menuInfo);
 
         /** appeller sms email localise supprimer */
-        menu.add(0, v.getId(), 0, "Supprimer le contact");
-        menu.add(0, v.getId(), 0, "Voir l'adresse du contact");
+        menu.add(0, v.getId(), 0, "Appeler");
         menu.add(0, v.getId(), 0, "Envoyer un SMS");
-        menu.add(0, v.getId(), 0, "Appeller le contact");
-        menu.add(0, v.getId(), 0, "Envoyer un email");
+        menu.add(0, v.getId(), 0, "Envoyer un Email");
+        menu.add(0, v.getId(), 0, "Voir l'adresse du contact");
+        menu.add(0, v.getId(), 0, "Supprimer le contact");
     }
 
     @Override
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
             fillData();
         }
 
-        if (item.getTitle() == "Appeller le contact"){
+        if (item.getTitle() == "Appeler"){
             Uri number = Uri.parse("tel:" + SelectedTel);
             Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
             startActivity(callIntent);
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(messageIntent);
         }
 
-        if (item.getTitle() == "Envoyer un email"){
+        if (item.getTitle() == "Envoyer un Email"){
             Uri mail = Uri.parse("mailto:" + SelectedEmail);
             Intent emailIntent = new Intent(Intent.ACTION_SENDTO, mail);
             startActivity(emailIntent);
