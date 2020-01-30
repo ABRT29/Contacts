@@ -1,57 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
-
+    android:orientation="horizontal"
+    android:padding="16dp" >
 
     <TextView
         android:id="@+id/data_prenom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_width="363dp"
+        android:layout_height="19dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="91dp"
+        android:layout_marginLeft="91dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="69dp"
+        android:layout_marginRight="69dp" />
 
     <TextView
         android:id="@+id/data_nom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_width="363dp"
+        android:layout_height="19dp"
+        android:layout_below="@+id/data_prenom"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="49dp"
+        android:layout_marginLeft="49dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginRight="47dp" />
 
     <TextView
         android:id="@+id/data_adresse"
-        android:layout_width="match_parent"
+        android:layout_width="296dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_below="@+id/data_prenom"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="67dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginRight="63dp" />
 
     <TextView
         android:id="@+id/data_complement"
-        android:layout_width="match_parent"
+        android:layout_width="282dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_below="@+id/data_prenom"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="34dp"
+        android:layout_marginLeft="34dp"
+        android:layout_marginTop="97dp"
+        android:layout_marginEnd="79dp"
+        android:layout_marginRight="79dp" />
 
     <TextView
         android:id="@+id/data_codepostale"
-        android:layout_width="wrap_content"
+        android:layout_width="282dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_below="@+id/data_prenom"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="141dp"
+        android:layout_marginEnd="94dp"
+        android:layout_marginRight="94dp" />
 
     <TextView
         android:id="@+id/data_ville"
-        android:layout_width="wrap_content"
+        android:layout_width="282dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_below="@+id/data_prenom"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="75dp"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="182dp"
+        android:layout_marginEnd="133dp"
+        android:layout_marginRight="133dp" />
 
     <TextView
         android:id="@+id/data_telephone"
-        android:layout_width="match_parent"
+        android:layout_width="282dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_below="@+id/data_prenom"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="89dp"
+        android:layout_marginLeft="89dp"
+        android:layout_marginTop="214dp"
+        android:layout_marginEnd="151dp"
+        android:layout_marginRight="151dp" />
 
     <TextView
         android:id="@+id/data_email"
-        android:layout_width="match_parent"
+        android:layout_width="179dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_below="@+id/data_prenom"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="107dp"
+        android:layout_marginLeft="107dp"
+        android:layout_marginTop="249dp"
+        android:layout_marginEnd="109dp"
+        android:layout_marginRight="109dp" />
 
-</LinearLayout>
+</RelativeLayout>

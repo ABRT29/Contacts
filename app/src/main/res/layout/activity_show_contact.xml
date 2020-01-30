@@ -9,7 +9,7 @@
     <ListView
         android:id="@+id/list_view_data"
         android:layout_width="0dp"
-        android:layout_height="729dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -18,4 +18,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:keepScreenOn="false"
+        app:elevation="0dp"
+        app:itemHorizontalTranslationEnabled="false"
+        app:itemIconTint="#ffffff"
+        app:itemTextColor="#ffffff"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/navigation" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
