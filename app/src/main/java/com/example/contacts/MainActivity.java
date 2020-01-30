@@ -20,7 +20,7 @@ import android.widget.SimpleCursorAdapter;
 public class MainActivity extends AppCompatActivity {
 
     private ContactDbAdapter db;
-// COUcou c'est menzo
+// COUcou c'est menzofkjfo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
