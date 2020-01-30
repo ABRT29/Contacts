@@ -168,7 +168,7 @@ public class ContactDbAdapter {
     public Cursor fetchAllContacts() {
 
         return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_NOM,
-                KEY_PRENOM }, null, null, null, null, KEY_PRENOM);
+                KEY_PRENOM }, null, null, null, null, KEY_PRENOM + " COLLATE NOCASE ASC, " + KEY_NOM + " COLLATE NOCASE ASC ");
     }
 
     /**

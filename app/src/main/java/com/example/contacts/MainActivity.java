@@ -84,10 +84,15 @@ public class MainActivity extends AppCompatActivity {
 
         final ListView list_view_task = (ListView) findViewById(R.id.list_view_contacts);
 
-
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         Cursor SelectedTaskCursor = (Cursor) list_view_task.getItemAtPosition(info.position);
-        final String SelectedTask = SelectedTaskCursor.getString(SelectedTaskCursor.getColumnIndex("new_adresse"));
+        final String SelectedTask = SelectedTaskCursor.getString(SelectedTaskCursor.getColumnIndex("new_nom"));
+
+        if (item.getTitle() == "Supprimer"){
+            Uri webpage = Uri.parse("http://www.google.com/#q=" + SelectedTask);
+            Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
+            startActivity(webIntent);
+        }
 
         if (item.getTitle() == "Rechercher sur Google"){
             Uri webpage = Uri.parse("http://www.google.com/#q=" + SelectedTask);
@@ -103,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
         return true;
     }
-     **/
+    */
 
 
     @Override

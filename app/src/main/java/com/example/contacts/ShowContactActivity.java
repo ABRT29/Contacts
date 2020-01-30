@@ -32,8 +32,6 @@ public class ShowContactActivity extends AppCompatActivity {
 
 
 
-        System.out.println(id);
-
         Cursor c = db.fetchContact(id);
         startManagingCursor(c);
 
