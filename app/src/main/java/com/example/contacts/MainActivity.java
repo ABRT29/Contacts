@@ -71,44 +71,80 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    /**
+
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        menu.add(0, v.getId(), 0, "Rechercher sur Google");
-        menu.add(0, v.getId(), 0, "Rechercher sur Maps");
+
+        /** appeller sms email localise supprimer */
+        menu.add(0, v.getId(), 0, "Supprimer le contact");
+        menu.add(0, v.getId(), 0, "Voir l'adresse du contact");
+        menu.add(0, v.getId(), 0, "Envoyer un SMS");
+        menu.add(0, v.getId(), 0, "Appeller le contact");
+        menu.add(0, v.getId(), 0, "Envoyer un email");
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
 
-        final ListView list_view_task = (ListView) findViewById(R.id.list_view_contacts);
+        final ListView list_view_contacts = (ListView) findViewById(R.id.list_view_contacts);
 
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        Cursor SelectedTaskCursor = (Cursor) list_view_task.getItemAtPosition(info.position);
-        final String SelectedTask = SelectedTaskCursor.getString(SelectedTaskCursor.getColumnIndex("new_nom"));
+        Cursor SelectedCursor = (Cursor) list_view_contacts.getItemAtPosition(info.position);
 
-        if (item.getTitle() == "Supprimer"){
-            Uri webpage = Uri.parse("http://www.google.com/#q=" + SelectedTask);
-            Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
-            startActivity(webIntent);
+        final long SelectedId = SelectedCursor.getLong(SelectedCursor.getColumnIndex("_id"));
+
+        /**
+         * Récupération des données non affichées dans la ligne
+         */
+        Cursor c = db.fetchContact(SelectedId);
+        startManagingCursor(c);
+
+        final String SelectedTel = c.getString(c.getColumnIndex("new_telephone"));
+        final String SelectedEmail = c.getString(c.getColumnIndex("new_email"));
+
+        final String SelectedAdresse = c.getString(c.getColumnIndex("new_adresse"));
+        final String SelectedComplement = c.getString(c.getColumnIndex("new_complement"));
+        final String SelectedCodePostale = c.getString(c.getColumnIndex("new_codepostale"));
+        final String SelectedVille = c.getString(c.getColumnIndex("new_ville"));
+
+
+        /**
+         * Actions
+         */
+        if (item.getTitle() == "Supprimer le contact"){
+            db.deleteContact(SelectedId);
+            fillData();
         }
 
-        if (item.getTitle() == "Rechercher sur Google"){
-            Uri webpage = Uri.parse("http://www.google.com/#q=" + SelectedTask);
-            Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
-            startActivity(webIntent);
+        if (item.getTitle() == "Appeller le contact"){
+            Uri number = Uri.parse("tel:" + SelectedTel);
+            Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
+            startActivity(callIntent);
         }
 
-        if (item.getTitle() == "Rechercher sur Maps"){
-            Uri location =  Uri.parse("google.navigation:q=" + SelectedTask);
+        if (item.getTitle() == "Envoyer un SMS"){
+            Uri msg = Uri.parse("smsto:" + SelectedTel);
+            Intent messageIntent = new Intent(Intent.ACTION_SENDTO, msg);
+            startActivity(messageIntent);
+        }
+
+        if (item.getTitle() == "Envoyer un email"){
+            Uri mail = Uri.parse("mailto:" + SelectedEmail);
+            Intent emailIntent = new Intent(Intent.ACTION_SENDTO, mail);
+            startActivity(emailIntent);
+        }
+
+        if (item.getTitle() == "Voir l'adresse du contact"){
+            Uri location = Uri.parse("geo:0,0?q=" + SelectedAdresse + ", " + SelectedComplement + ", " + SelectedCodePostale + ", " + SelectedVille);
             Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
             startActivity(mapIntent);
         }
 
+
         return true;
     }
-    */
+
 
 
     @Override
