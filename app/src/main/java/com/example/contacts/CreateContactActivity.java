@@ -47,10 +47,22 @@ public class CreateContactActivity extends AppCompatActivity {
         String new_telephone = telephone.getText().toString();
         String new_email = email.getText().toString();
 
-        db.createContact(new_nom, new_prenom, new_adresse, new_complement, new_codepostale, new_ville, new_telephone, new_email);
+        if (nom.length() == 0 || telephone.length() == 0 ){
+            if(nom.length() == 0)
+            {
+                nom.setError("L'ajout d'un nom est obligatoire.");
+            }
+            if(telephone.length() == 0) {
+                telephone.setError("L'ajout d'un numéro est obligatoire.");
+            }
+        }
+        else {
+            db.createContact(new_nom, new_prenom, new_adresse, new_complement, new_codepostale, new_ville, new_telephone, new_email);
 
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
     }
 
 

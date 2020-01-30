@@ -2,6 +2,7 @@ package com.example.contacts;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -10,6 +11,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.view.ContextMenu;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
         fillData();
 
+        registerForContextMenu(list_view_contacts);
+
 
         list_view_contacts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -65,6 +69,41 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CreateContactActivity.class);
         startActivity(intent);
     }
+
+
+    /**
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        menu.add(0, v.getId(), 0, "Rechercher sur Google");
+        menu.add(0, v.getId(), 0, "Rechercher sur Maps");
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+
+        final ListView list_view_task = (ListView) findViewById(R.id.list_view_contacts);
+
+
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        Cursor SelectedTaskCursor = (Cursor) list_view_task.getItemAtPosition(info.position);
+        final String SelectedTask = SelectedTaskCursor.getString(SelectedTaskCursor.getColumnIndex("new_adresse"));
+
+        if (item.getTitle() == "Rechercher sur Google"){
+            Uri webpage = Uri.parse("http://www.google.com/#q=" + SelectedTask);
+            Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
+            startActivity(webIntent);
+        }
+
+        if (item.getTitle() == "Rechercher sur Maps"){
+            Uri location =  Uri.parse("google.navigation:q=" + SelectedTask);
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
+            startActivity(mapIntent);
+        }
+
+        return true;
+    }
+     **/
 
 
     @Override
