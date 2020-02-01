@@ -1,16 +1,28 @@
 package com.example.contacts;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ShowContactActivity extends AppCompatActivity {
 
     private ContactDbAdapter db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,17 +38,13 @@ public class ShowContactActivity extends AppCompatActivity {
 
     public void fillData() {
 
-
         Intent intent = getIntent();
         Long id = intent.getExtras().getLong("Id");
-
-
 
         Cursor c = db.fetchContact(id);
         startManagingCursor(c);
 
         final ListView list_view_data = (ListView) findViewById(R.id.list_view_contacts);
-
 
         String[] from = new String[] { ContactDbAdapter.KEY_PRENOM, ContactDbAdapter.KEY_NOM, ContactDbAdapter.KEY_ADRESSE, ContactDbAdapter.KEY_COMPLEMENT, ContactDbAdapter.KEY_CODEPOSTALE, ContactDbAdapter.KEY_VILLE, ContactDbAdapter.KEY_TELEPHONE, ContactDbAdapter.KEY_EMAIL };
         int[] to = new int[] { R.id.data_prenom, R.id.data_nom, R.id.data_adresse, R.id.data_complement, R.id.data_codepostale, R.id.data_ville, R.id.data_telephone, R.id.data_email };
@@ -45,7 +53,6 @@ public class ShowContactActivity extends AppCompatActivity {
                 new SimpleCursorAdapter(this, R.layout.data_row, c, from, to, 0);
         list_view_data.setAdapter(contact);
     }
-
 
 
 }
