@@ -1,5 +1,17 @@
+/**
+ *
+ * PROJET ANDROID JAVA - LPDIMFI
+ *
+ * Aurélien BURET & Menzo KORCHIT
+ *
+ * Application : CONTACTS
+ *
+ */
+
 package com.example.contacts;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -11,18 +23,22 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.provider.MediaStore;
 import android.view.ContextMenu;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private ContactDbAdapter db;
-// COUcou c'est menzo
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +92,10 @@ public class MainActivity extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
 
-        /** appeller sms email localise supprimer */
+        /** appeller sms email localiser supprimer */
+        /**
+         * Menu contextuel qui seront affichés lors d'un appui long
+         */
         menu.add(0, v.getId(), 0, "Appeler");
         menu.add(0, v.getId(), 0, "Envoyer un SMS");
         menu.add(0, v.getId(), 0, "Envoyer un Email");
@@ -87,6 +106,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
 
+        /**
+         * Récupération de l'ID en fonction de la position de la ligne dans la listView
+         */
         final ListView list_view_contacts = (ListView) findViewById(R.id.list_view_contacts);
 
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
@@ -95,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         final long SelectedId = SelectedCursor.getLong(SelectedCursor.getColumnIndex("_id"));
 
         /**
-         * Récupération des données non affichées dans la ligne
+         * Récupération des données en bdd car non affichées dans la ligne du listView
          */
         Cursor c = db.fetchContact(SelectedId);
         startManagingCursor(c);
@@ -110,38 +132,31 @@ public class MainActivity extends AppCompatActivity {
 
 
         /**
-         * Actions
+         * Actions menu contextuel
          */
+
+        ActionsContacts actions = new ActionsContacts();
+
         if (item.getTitle() == "Supprimer le contact"){
-            db.deleteContact(SelectedId);
+            alertDelete(SelectedId);
             fillData();
         }
 
         if (item.getTitle() == "Appeler"){
-            Uri number = Uri.parse("tel:" + SelectedTel);
-            Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
-            startActivity(callIntent);
+            actions.call(this,SelectedTel);
         }
 
         if (item.getTitle() == "Envoyer un SMS"){
-            Uri msg = Uri.parse("smsto:" + SelectedTel);
-            Intent messageIntent = new Intent(Intent.ACTION_SENDTO, msg);
-            startActivity(messageIntent);
+            actions.message(this, SelectedTel);
         }
 
         if (item.getTitle() == "Envoyer un Email"){
-            Uri mail = Uri.parse("mailto:" + SelectedEmail);
-            Intent emailIntent = new Intent(Intent.ACTION_SENDTO, mail);
-            startActivity(emailIntent);
+            actions.email(this, SelectedEmail);
         }
 
         if (item.getTitle() == "Voir l'adresse du contact"){
-            Uri location = Uri.parse("geo:0,0?q=" + SelectedAdresse + ", " + SelectedComplement + ", " + SelectedCodePostale + ", " + SelectedVille);
-            Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
-            startActivity(mapIntent);
+            actions.map(this, SelectedAdresse, SelectedComplement, SelectedCodePostale, SelectedVille);
         }
-
-
         return true;
     }
 
@@ -162,12 +177,52 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_ReadQRCode) {
+            Intent mediaChooser =  new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(mediaChooser, 1);
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    /**
+     * POP UP ALERT DELETE
+     */
+    public void alertDelete(final Long SelectedId){
+        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+        alertDialog.setTitle("Suppression du contact");
+        alertDialog.setMessage("Voulez-vous vraiment supprimer ce contact ?");
+
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getApplicationContext(), "Contact supprimés", Toast.LENGTH_SHORT).show();
+                db.deleteContact(SelectedId);
+                fillData();
+            }
+        });
+
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "ANNULER", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getApplicationContext(), "Aucune suppression n'a était effectuée", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        alertDialog.show();
+    }
+
+
+    /**
+     *
+     * tabLayout
+     *  Contacts
+     *  Favoris
+     *
+     * A faire
+     *
+     */
+
+
 
     public void fillData() {
         Cursor c = db.fetchAllContacts();

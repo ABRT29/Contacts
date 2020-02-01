@@ -103,4 +103,6 @@
     </string>
     <string name="QRcode">QR Code</string>
     <string name="ContactFav">Favoris</string>
+    <string name="Fav">Favoris</string>
+    <string name="action_ReadQRCode">Lecteur de code QR</string>
 </resources>
