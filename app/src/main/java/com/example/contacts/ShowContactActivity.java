@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 
 public class ShowContactActivity extends AppCompatActivity {
 
@@ -31,21 +32,42 @@ public class ShowContactActivity extends AppCompatActivity {
         Long id = intent.getExtras().getLong("Id");
 
 
+        String prenom = db.prenomContact(id);
+        TextView d_prenom = findViewById(R.id.d_prenom);
+        d_prenom.setText(prenom);
 
-        System.out.println(id);
+        String nom = db.nomContact(id);
+        TextView d_nom = findViewById(R.id.d_nom);
+        d_nom.setText(nom);
 
-        Cursor c = db.fetchContact(id);
-        startManagingCursor(c);
+        String adresse = db.adresseContact(id);
+        TextView d_adresse = findViewById(R.id.d_adresse);
+        d_adresse.setText(adresse);
 
-        final ListView list_view_data = (ListView) findViewById(R.id.list_view_data);
+        String complement = db.complementContact(id);
+        TextView d_complement = findViewById(R.id.d_complement);
+        d_complement.setText(complement);
+
+        String codepostale = db.cpContact(id);
+        TextView d_codepostale = findViewById(R.id.d_codepostale);
+        d_codepostale.setText(codepostale);
+
+        String ville = db.villeContact(id);
+        TextView d_ville = findViewById(R.id.d_ville);
+        d_ville.setText(ville);
+
+        String telephone = db.telephoneContact(id);
+        TextView d_telephone = findViewById(R.id.d_telephone);
+        d_telephone.setText(telephone);
+
+        String email = db.emailContact(id);
+        TextView d_email = findViewById(R.id.d_email);
+        d_email.setText(email);
 
 
-        String[] from = new String[] { ContactDbAdapter.KEY_PRENOM, ContactDbAdapter.KEY_NOM, ContactDbAdapter.KEY_ADRESSE, ContactDbAdapter.KEY_COMPLEMENT, ContactDbAdapter.KEY_CODEPOSTALE, ContactDbAdapter.KEY_VILLE, ContactDbAdapter.KEY_TELEPHONE, ContactDbAdapter.KEY_EMAIL };
-        int[] to = new int[] { R.id.data_prenom, R.id.data_nom, R.id.data_adresse, R.id.data_complement, R.id.data_codepostale, R.id.data_ville, R.id.data_telephone, R.id.data_email };
 
-        SimpleCursorAdapter contact =
-                new SimpleCursorAdapter(this, R.layout.data_row, c, from, to, 0);
-        list_view_data.setAdapter(contact);
+
+
     }
 
 

@@ -168,7 +168,7 @@ public class ContactDbAdapter {
     public Cursor fetchAllContacts() {
 
         return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_NOM,
-                KEY_PRENOM }, null, null, null, null, KEY_PRENOM);
+                KEY_PRENOM }, null, null, null, null, KEY_PRENOM + " COLLATE NOCASE ASC, " + KEY_NOM + " COLLATE NOCASE ASC ");
     }
 
     /**
@@ -216,4 +216,130 @@ public class ContactDbAdapter {
         return mDb.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
     }
 
+    public String prenomContact(long rowId) throws SQLException {
+
+        Cursor mCursor =
+
+                mDb.query(true, DATABASE_TABLE, new String[] { KEY_PRENOM}, KEY_ROWID + "=" + rowId, null,
+                        null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+
+        String str = mCursor.getString(mCursor.getColumnIndex("new_prenom"));
+
+        return str;
+
+    }
+
+    public String nomContact(long rowId) throws SQLException {
+
+        Cursor mCursor =
+
+                mDb.query(true, DATABASE_TABLE, new String[] { KEY_NOM}, KEY_ROWID + "=" + rowId, null,
+                        null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+
+        String str = mCursor.getString(mCursor.getColumnIndex("new_nom"));
+
+        return str;
+
+    }
+
+    public String adresseContact(long rowId) throws SQLException {
+
+        Cursor mCursor =
+
+                mDb.query(true, DATABASE_TABLE, new String[] { KEY_ADRESSE}, KEY_ROWID + "=" + rowId, null,
+                        null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+
+        String str = mCursor.getString(mCursor.getColumnIndex("new_adresse"));
+
+        return str;
+
+    }
+
+    public String complementContact(long rowId) throws SQLException {
+
+        Cursor mCursor =
+
+                mDb.query(true, DATABASE_TABLE, new String[] { KEY_COMPLEMENT}, KEY_ROWID + "=" + rowId, null,
+                        null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+
+        String str = mCursor.getString(mCursor.getColumnIndex("new_complement"));
+
+        return str;
+
+    }
+    public String cpContact(long rowId) throws SQLException {
+
+        Cursor mCursor =
+
+                mDb.query(true, DATABASE_TABLE, new String[] { KEY_CODEPOSTALE}, KEY_ROWID + "=" + rowId, null,
+                        null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+
+        String str = mCursor.getString(mCursor.getColumnIndex("new_codepostale"));
+
+        return str;
+
+    }
+
+    public String villeContact(long rowId) throws SQLException {
+
+        Cursor mCursor =
+
+                mDb.query(true, DATABASE_TABLE, new String[] { KEY_VILLE}, KEY_ROWID + "=" + rowId, null,
+                        null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+
+        String str = mCursor.getString(mCursor.getColumnIndex("new_ville"));
+
+        return str;
+
+    }
+
+    public String telephoneContact(long rowId) throws SQLException {
+
+        Cursor mCursor =
+
+                mDb.query(true, DATABASE_TABLE, new String[] { KEY_TELEPHONE}, KEY_ROWID + "=" + rowId, null,
+                        null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+
+        String str = mCursor.getString(mCursor.getColumnIndex("new_telephone"));
+
+        return str;
+
+    }
+
+    public String emailContact(long rowId) throws SQLException {
+
+        Cursor mCursor =
+
+                mDb.query(true, DATABASE_TABLE, new String[] { KEY_EMAIL}, KEY_ROWID + "=" + rowId, null,
+                        null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+
+        String str = mCursor.getString(mCursor.getColumnIndex("new_email"));
+
+        return str;
+
+    }
 }
