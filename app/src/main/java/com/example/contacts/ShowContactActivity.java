@@ -1,17 +1,29 @@
 package com.example.contacts;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ShowContactActivity extends AppCompatActivity {
 
     private ContactDbAdapter db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,11 +77,7 @@ public class ShowContactActivity extends AppCompatActivity {
         d_email.setText(email);
 
 
-
-
-
     }
-
 
 
 }

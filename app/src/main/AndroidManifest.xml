@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/contacts_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ShowContactActivity"></activity>
+        <activity android:name=".ShowContactActivity" />
         <activity android:name=".CreateContactActivity" />
         <activity
             android:name=".MainActivity"

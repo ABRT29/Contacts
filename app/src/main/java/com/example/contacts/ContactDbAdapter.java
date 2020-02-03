@@ -342,4 +342,5 @@ public class ContactDbAdapter {
         return str;
 
     }
+
 }

@@ -6,155 +6,245 @@
     android:layout_height="match_parent"
     tools:context=".ShowContactActivity">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:keepScreenOn="false"
-        app:elevation="0dp"
-        app:itemHorizontalTranslationEnabled="false"
-        app:itemIconTint="#ffffff"
-        app:itemTextColor="#ffffff"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/navigation" >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="32dp"
-        android:text="@string/QRcode"
-        android:background="@color/colorPrimary"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
 
+            <CheckBox
+                android:id="@+id/data_fav"
 
-    <CheckBox
-        android:id="@+id/data_fav"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:checked="false"
-        android:text="@string/ContactFav"
-        android:typeface="sans"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="60dp"
 
-    <TextView
-        android:id="@+id/d_prenom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="200dp"
-        android:text="Prenom"
-        android:textSize="50px"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+                android:clickable="false"
+                app:layout_constraintStart_toEndOf="@+id/d_nom" />
+
+            <TextView
+                android:id="@+id/d_prenom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="50dp"
+                android:scrollHorizontally="true"
+                android:text="Prenom"
+                android:textSize="36sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/d_nom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="50dp"
+                android:layout_toRightOf="@+id/d_prenom"
+                android:scrollHorizontally="true"
+                android:text="Nom"
+                android:textSize="36sp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/d_telephone"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="125dp"
+                android:text="telephone"
+                android:textSize="24sp"
+
+                app:layout_constraintTop_toBottomOf="@+id/d_codepostale" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/ActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="121dp"
+                android:layout_marginRight="44dp"
+                android:clickable="true"
+                app:backgroundTint="@color/colorPrimary"
+                app:fabSize="mini"
+                app:layout_constraintStart_toEndOf="@+id/d_nom"
+                app:layout_constraintTop_toBottomOf="@+id/data_fav"
+                app:srcCompat="@android:drawable/ic_lock_lock" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="237dp"
+                android:layout_marginRight="44dp"
+                android:clickable="true"
+                app:backgroundTint="@color/colorPrimary"
+                app:fabSize="mini"
+                app:layout_constraintStart_toEndOf="@+id/d_nom"
+                app:layout_constraintTop_toBottomOf="@+id/data_fav"
+                app:srcCompat="@android:drawable/ic_lock_lock" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="177dp"
+                android:layout_marginRight="44dp"
+                android:clickable="true"
+                app:backgroundTint="@color/colorPrimary"
+                app:fabSize="mini"
+                app:layout_constraintStart_toEndOf="@+id/d_nom"
+                app:layout_constraintTop_toBottomOf="@+id/data_fav"
+                app:srcCompat="@android:drawable/ic_lock_lock" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingAction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="121dp"
+                android:layout_marginRight="128dp"
+                android:clickable="true"
+                app:backgroundTint="@color/colorPrimary"
+                app:fabSize="mini"
+                app:layout_constraintStart_toEndOf="@+id/d_nom"
+                app:layout_constraintTop_toBottomOf="@+id/data_fav"
+                app:srcCompat="@android:drawable/ic_lock_lock" />
+
+            <TextView
+                android:id="@+id/d_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="185dp"
+                android:text="email"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@id/d_telephone"
+                app:layout_constraintTop_toBottomOf="@+id/d_codepostale" />
+
+            <TextView
+                android:id="@+id/d_codepostale"
+                android:layout_width="68dp"
+                android:layout_height="53dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="285dp"
+                android:text="Code Postale"
+
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/d_complement" />
+
+            <TextView
+                android:id="@+id/d_ville"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+
+                android:layout_marginTop="285dp"
+                android:layout_toRightOf="@id/d_codepostale"
+                android:text="Ville"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/d_codepostale"
+                app:layout_constraintTop_toBottomOf="@+id/d_complement" />
+
+            <TextView
+                android:id="@+id/d_adresse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="245dp"
+
+                android:text="adresse"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/d_email" />
+
+            <TextView
+                android:id="@+id/d_complement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="245dp"
+                android:layout_toRightOf="@id/d_adresse"
+                android:text="complément"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent" />
+
+          <!--  <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                app:backgroundTint="#FF0101"
+                app:srcCompat="@android:drawable/ic_lock_lock" /> -->
 
 
-    <TextView
-        android:id="@+id/d_nom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="200dp"
-        android:text="Nom"
-        android:textSize="50px"
-        app:layout_constraintStart_toEndOf="@+id/d_prenom"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/d_telephone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:text="numéro"
-        android:textSize="50px"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/d_nom" />
-
-    <TextView
-        android:id="@+id/d_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="email"
-        android:textSize="40px"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/d_codepostale" />
-
-    <TextView
-        android:id="@+id/d_codepostale"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Code Postale"
-        android:textSize="40px"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/d_complement" />
-
-    <TextView
-        android:id="@+id/d_ville"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="8dp"
-        android:text="Ville"
-
-        android:textSize="40px"
-        app:layout_constraintStart_toEndOf="@+id/d_codepostale"
-        app:layout_constraintTop_toBottomOf="@+id/d_complement" />
-
-    <TextView
-        android:id="@+id/d_adresse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:text="adresse"
-        android:textSize="40px"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/d_telephone" />
-
-    <TextView
-        android:id="@+id/d_complement"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="complément"
-        android:textSize="40px"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/d_adresse" />
-
+        </RelativeLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+<!--
+    <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:id="@+id/layout"
+android:layout_height="match_parent">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:background="#c1c1c1"
+            android:layout_height="300dp"
+            android:src="@drawable/a"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:background="#c1c1c1"
+            android:layout_height="300dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/b"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:background="#c1c1c1"
+            android:layout_height="300dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/c"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:background="#c1c1c1"
+            android:layout_height="300dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/d"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:background="#c1c1c1"
+            android:layout_height="300dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/e"/>
+    </LinearLayout>
+</ScrollView>
+</LinearLayout>
+
+-->
