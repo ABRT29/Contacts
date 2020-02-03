@@ -10,7 +10,6 @@ import android.widget.ListView;
 
 public class ActionsContacts {
 
-
     public void call(final Context context, final String SelectedTel){
         Uri number = Uri.parse("tel:" + SelectedTel);
         Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
@@ -34,8 +33,5 @@ public class ActionsContacts {
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
         context.startActivity(mapIntent);
     }
-
-
-
 
 }
