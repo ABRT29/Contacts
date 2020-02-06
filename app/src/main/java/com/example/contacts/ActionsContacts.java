@@ -1,37 +1,79 @@
 package com.example.contacts;
 
-
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
-public class ActionsContacts {
 
-    public void call(final Context context, final String SelectedTel){
-        Uri number = Uri.parse("tel:" + SelectedTel);
-        Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
-        context.startActivity(callIntent);
+
+public class ActionsContacts  {
+
+    private ContactDbAdapter db;
+
+    private Context mContext;
+
+    private String SelectedTel,
+            SelectedEmail,
+            SelectedAdresse,
+            SelectedComplement,
+            SelectedCodePostale,
+            SelectedVille;
+
+
+    ActionsContacts(Long id, Context context){
+
+        db = new ContactDbAdapter(context);
+        db.open();
+
+        this.mContext = context;
+
+
+        /**
+         * Récupération des données en bdd car non affichées dans la ligne du listView
+         */
+        Cursor c = db.fetchContact(id);
+        ((Activity) context).startManagingCursor(c);
+
+
+
+        this.SelectedTel = c.getString(c.getColumnIndex("new_telephone"));
+        this.SelectedEmail = c.getString(c.getColumnIndex("new_email"));
+
+        this.SelectedAdresse = c.getString(c.getColumnIndex("new_adresse"));
+        this.SelectedComplement = c.getString(c.getColumnIndex("new_complement"));
+        this.SelectedCodePostale = c.getString(c.getColumnIndex("new_codepostale"));
+        this.SelectedVille = c.getString(c.getColumnIndex("new_ville"));
     }
 
-    public void message(final Context context, final String SelectedTel){
-        Uri msg = Uri.parse("smsto:" + SelectedTel);
-        Intent messageIntent = new Intent(Intent.ACTION_SENDTO, msg);
-        context.startActivity(messageIntent);
-    }
 
-    public void email(final Context context, final String SelectedEmail){
-        Uri mail = Uri.parse("mailto:" + SelectedEmail);
-        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, mail);
-        context.startActivity(emailIntent);
-    }
+        /**
+         * ACTIONS
+         */
 
-    public void map(final Context context, final String SelectedAdresse, final String SelectedComplement, final String SelectedCodePostale, final String SelectedVille){
-        Uri location = Uri.parse("geo:0,0?q=" + SelectedAdresse + ", " + SelectedComplement + ", " + SelectedCodePostale + ", " + SelectedVille);
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
-        context.startActivity(mapIntent);
-    }
+        public void call(){
+            Uri number = Uri.parse("tel:" + SelectedTel);
+            Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
+            mContext.startActivity(callIntent);
+        }
+
+        public void message(){
+            Uri msg = Uri.parse("smsto:" + SelectedTel);
+            Intent messageIntent = new Intent(Intent.ACTION_SENDTO, msg);
+            mContext.startActivity(messageIntent);
+        }
+
+        public void email(){
+            Uri mail = Uri.parse("mailto:" + SelectedEmail);
+            Intent emailIntent = new Intent(Intent.ACTION_SENDTO, mail);
+            mContext.startActivity(emailIntent);
+        }
+
+        public void map(){
+            Uri location = Uri.parse("geo:0,0?q=" + SelectedAdresse + ", " + SelectedComplement + ", " + SelectedCodePostale + ", " + SelectedVille);
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
+            mContext.startActivity(mapIntent);
+        }
 
 }

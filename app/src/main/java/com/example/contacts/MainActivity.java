@@ -1,24 +1,18 @@
-/**
- *
- * PROJET ANDROID JAVA - LPDIMFI
- *
- * Aurélien BURET & Menzo KORCHIT
- *
- * Application : CONTACTS
- *
- */
-
 package com.example.contacts;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.zxing.BarcodeFormat;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -31,6 +25,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
@@ -74,9 +69,15 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(MainActivity.this, ShowContactActivity.class);
                 i.putExtra("Id", id);
                 startActivity(i);
+
             }
         });
+
     }
+
+
+
+
 
     /**
      * Redirection vers l'activité : CreateContact
@@ -114,48 +115,34 @@ public class MainActivity extends AppCompatActivity {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         Cursor SelectedCursor = (Cursor) list_view_contacts.getItemAtPosition(info.position);
 
-        final long SelectedId = SelectedCursor.getLong(SelectedCursor.getColumnIndex("_id"));
-
-        /**
-         * Récupération des données en bdd car non affichées dans la ligne du listView
-         */
-        Cursor c = db.fetchContact(SelectedId);
-        startManagingCursor(c);
-
-        final String SelectedTel = c.getString(c.getColumnIndex("new_telephone"));
-        final String SelectedEmail = c.getString(c.getColumnIndex("new_email"));
-
-        final String SelectedAdresse = c.getString(c.getColumnIndex("new_adresse"));
-        final String SelectedComplement = c.getString(c.getColumnIndex("new_complement"));
-        final String SelectedCodePostale = c.getString(c.getColumnIndex("new_codepostale"));
-        final String SelectedVille = c.getString(c.getColumnIndex("new_ville"));
+        final long id = SelectedCursor.getLong(SelectedCursor.getColumnIndex("_id"));
 
 
         /**
          * Actions menu contextuel
          */
 
-        ActionsContacts actions = new ActionsContacts();
+        ActionsContacts actions = new ActionsContacts(id, this);
 
         if (item.getTitle() == "Supprimer le contact"){
-            alertDelete(SelectedId);
+            alertDelete(id);
             fillData();
         }
 
         if (item.getTitle() == "Appeler"){
-            actions.call(this,SelectedTel);
+           actions.call();
         }
 
         if (item.getTitle() == "Envoyer un SMS"){
-            actions.message(this, SelectedTel);
+            actions.message();
         }
 
         if (item.getTitle() == "Envoyer un Email"){
-            actions.email(this, SelectedEmail);
+            actions.email();
         }
 
         if (item.getTitle() == "Voir l'adresse du contact"){
-            actions.map(this, SelectedAdresse, SelectedComplement, SelectedCodePostale, SelectedVille);
+            actions.map();
         }
         return true;
     }
@@ -210,17 +197,6 @@ public class MainActivity extends AppCompatActivity {
 
         alertDialog.show();
     }
-
-
-    /**
-     *
-     * tabLayout
-     *  Contacts
-     *  Favoris
-     *
-     * A faire
-     *
-     */
 
 
 

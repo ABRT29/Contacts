@@ -6,134 +6,207 @@
     android:layout_height="match_parent"
     tools:context=".ShowContactActivity">
 
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <CheckBox
-        android:id="@+id/data_fav"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:checked="false"
-        android:text="@string/ContactFav"
-        android:typeface="sans"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/d_prenom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="200dp"
-        android:text="Prenom"
-        android:textSize="50px"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/d_nom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="200dp"
-        android:text="Nom"
-        android:textSize="50px"
-        app:layout_constraintStart_toEndOf="@+id/d_prenom"
-        app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/qrCode"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginStart="130dp"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="400dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginRight="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/d_telephone"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:text="numéro"
-        android:textSize="50px"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/d_nom" />
+            </ImageView>
 
-    <ImageButton
-        android:id="@+id/searchImageButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="148dp"
-        android:src="@android:drawable/ic_menu_search"
-        app:layout_constraintStart_toEndOf="@+id/d_nom"
-        app:layout_constraintTop_toBottomOf="@+id/data_fav" />
+            <CheckBox
+                android:id="@+id/data_fav"
 
-    <TextView
-        android:id="@+id/d_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="email"
-        android:textSize="40px"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/d_codepostale" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentRight="false"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="16dp"
 
-    <TextView
-        android:id="@+id/d_codepostale"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Code Postale"
-        android:textSize="40px"
+                android:layout_marginTop="60dp"
+                android:layout_toRightOf="@id/d_nom"
+                android:clickable="true"
+                app:layout_constraintStart_toEndOf="@+id/d_nom" />
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/d_complement" />
+            <TextView
+                android:id="@+id/d_prenom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="50dp"
+                android:scrollHorizontally="true"
+                android:text="Prenom"
+                android:textSize="36sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/d_ville"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="8dp"
-        android:text="Ville"
+            <TextView
+                android:id="@+id/d_nom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="50dp"
+                android:layout_toRightOf="@+id/d_prenom"
+                android:scrollHorizontally="true"
+                android:text="Nom"
+                android:textSize="36sp"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        android:textSize="40px"
-        app:layout_constraintStart_toEndOf="@+id/d_codepostale"
-        app:layout_constraintTop_toBottomOf="@+id/d_complement" />
+            <TextView
+                android:id="@+id/d_telephone"
 
-    <TextView
-        android:id="@+id/d_adresse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:text="adresse"
-        android:textSize="40px"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="125dp"
+                android:text="telephone"
+                android:textSize="24sp"
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/d_telephone" />
+                app:layout_constraintTop_toBottomOf="@+id/d_codepostale" />
 
-    <TextView
-        android:id="@+id/d_complement"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="complément"
-        android:textSize="40px"
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="121dp"
+                android:layout_marginRight="44dp"
+                android:clickable="true"
+                app:backgroundTint="@color/colorPrimary"
+                app:fabSize="mini"
+                app:layout_constraintStart_toEndOf="@+id/d_nom"
+                app:layout_constraintTop_toBottomOf="@+id/data_fav"
+                app:srcCompat="@android:drawable/ic_lock_lock" />
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/d_adresse" />
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatMap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="237dp"
+                android:layout_marginRight="44dp"
+                android:clickable="true"
+                app:backgroundTint="@color/colorPrimary"
+                app:fabSize="mini"
+                app:layout_constraintStart_toEndOf="@+id/d_nom"
+                app:layout_constraintTop_toBottomOf="@+id/data_fav"
+                app:srcCompat="@android:drawable/ic_lock_lock" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="177dp"
+                android:layout_marginRight="44dp"
+                android:clickable="true"
+                app:backgroundTint="@color/colorPrimary"
+                app:fabSize="mini"
+                app:layout_constraintStart_toEndOf="@+id/d_nom"
+                app:layout_constraintTop_toBottomOf="@+id/data_fav"
+                app:srcCompat="@android:drawable/ic_lock_lock" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatTelephone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="121dp"
+                android:layout_marginRight="128dp"
+                android:clickable="true"
+                app:backgroundTint="@color/colorPrimary"
+                app:fabSize="mini"
+                app:layout_constraintStart_toEndOf="@+id/d_nom"
+                app:layout_constraintTop_toBottomOf="@+id/data_fav"
+                app:srcCompat="@android:drawable/ic_lock_lock" />
+
+            <TextView
+                android:id="@+id/d_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="185dp"
+                android:text="email"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@id/d_telephone"
+                app:layout_constraintTop_toBottomOf="@+id/d_codepostale" />
+
+            <TextView
+                android:id="@+id/d_codepostale"
+                android:layout_width="68dp"
+                android:layout_height="53dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="285dp"
+                android:text="Code Postale"
+
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/d_complement" />
+
+            <TextView
+                android:id="@+id/d_ville"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+
+                android:layout_marginTop="285dp"
+                android:layout_toRightOf="@id/d_codepostale"
+                android:text="Ville"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/d_codepostale"
+                app:layout_constraintTop_toBottomOf="@+id/d_complement" />
+
+            <TextView
+                android:id="@+id/d_adresse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="245dp"
+
+                android:text="adresse"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/d_email" />
+
+            <TextView
+                android:id="@+id/d_complement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="245dp"
+                android:layout_toRightOf="@id/d_adresse"
+                android:text="complément"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+        </RelativeLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

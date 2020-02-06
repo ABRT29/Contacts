@@ -7,42 +7,92 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.zxing.BarcodeFormat;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 public class ShowContactActivity extends AppCompatActivity {
 
     private ContactDbAdapter db;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_contact);
 
-        db = new ContactDbAdapter(this);
-        db.open();
+        final Long id = getIntent().getExtras().getLong("Id");
 
-        fillData();
+        final ActionsContacts actions = new ActionsContacts(id, this);
+
+        FloatingActionButton floatTelephone = findViewById(R.id.floatTelephone);
+        floatTelephone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                actions.call();
+            }
+        });
+
+        FloatingActionButton floatMessage = findViewById(R.id.floatMessage);
+        floatMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                actions.message();
+            }
+        });
+
+        FloatingActionButton floatEmail = findViewById(R.id.floatEmail);
+        floatEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                actions.email();
+            }
+        });
+
+        FloatingActionButton floatMap = findViewById(R.id.floatMap);
+        floatMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                actions.map();
+            }
+        });
+
+
+        fillData(id);
+
+
+        try {
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            Bitmap bitmap = barcodeEncoder.encodeBitmap("content", BarcodeFormat.QR_CODE, 400, 400);
+            ImageView imageViewQrCode = (ImageView) findViewById(R.id.qrCode);
+            imageViewQrCode.setImageBitmap(bitmap);
+        } catch(Exception e) {
+        }
+
+
+
     }
 
 
-    public void fillData() {
+    public void fillData(Long id) {
 
-
-        Intent intent = getIntent();
-        Long id = intent.getExtras().getLong("Id");
-
+        db = new ContactDbAdapter(this);
+        db.open();
 
         String prenom = db.prenomContact(id);
         TextView d_prenom = findViewById(R.id.d_prenom);
@@ -76,8 +126,10 @@ public class ShowContactActivity extends AppCompatActivity {
         TextView d_email = findViewById(R.id.d_email);
         d_email.setText(email);
 
-
     }
+
+
+
 
 
 }
