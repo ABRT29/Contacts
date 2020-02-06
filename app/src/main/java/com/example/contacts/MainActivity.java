@@ -12,6 +12,8 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.zxing.BarcodeFormat;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -165,8 +167,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_ReadQRCode) {
-            Intent mediaChooser =  new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivityForResult(mediaChooser, 1);
+            //READER
         }
 
         return super.onOptionsItemSelected(item);

@@ -20,34 +20,39 @@
 
             <ImageView
                 android:id="@+id/qrCode"
-                android:layout_width="200dp"
+                android:layout_width="wrap_content"
                 android:layout_height="200dp"
-                android:layout_marginStart="130dp"
-                android:layout_marginLeft="130dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="106dp"
+                android:layout_marginLeft="106dp"
                 android:layout_marginTop="400dp"
-                android:layout_marginEnd="0dp"
-                android:layout_marginRight="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="105dp"
+                android:layout_marginRight="105dp"
+                app:layout_constraintEnd_toEndOf="@id/d_email"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="TODO"/>
 
-            </ImageView>
 
             <CheckBox
                 android:id="@+id/data_fav"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="false"
                 android:layout_alignParentRight="false"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
-
                 android:layout_marginTop="60dp"
                 android:layout_toRightOf="@id/d_nom"
                 android:clickable="true"
-                app:layout_constraintStart_toEndOf="@+id/d_nom" />
+                app:layout_constraintStart_toEndOf="@+id/d_nom"
+                android:button="@drawable/checkbox_layout"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
 
             <TextView
                 android:id="@+id/d_prenom"
@@ -56,10 +61,11 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="50dp"
                 android:scrollHorizontally="true"
-                android:text="Prenom"
+                android:text="@string/prenom"
                 android:textSize="36sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="16dp" />
 
             <TextView
                 android:id="@+id/d_nom"
@@ -71,7 +77,9 @@
                 android:scrollHorizontally="true"
                 android:text="Nom"
                 android:textSize="36sp"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/d_prenom" />
 
             <TextView
                 android:id="@+id/d_telephone"
@@ -83,7 +91,8 @@
                 android:text="telephone"
                 android:textSize="24sp"
 
-                app:layout_constraintTop_toBottomOf="@+id/d_codepostale" />
+                app:layout_constraintTop_toBottomOf="@+id/d_codepostale"
+                android:layout_marginStart="16dp" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/floatMessage"
@@ -98,7 +107,7 @@
                 app:fabSize="mini"
                 app:layout_constraintStart_toEndOf="@+id/d_nom"
                 app:layout_constraintTop_toBottomOf="@+id/data_fav"
-                app:srcCompat="@android:drawable/ic_lock_lock" />
+                app:srcCompat="@drawable/ic_chat_24px" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/floatMap"
@@ -113,7 +122,7 @@
                 app:fabSize="mini"
                 app:layout_constraintStart_toEndOf="@+id/d_nom"
                 app:layout_constraintTop_toBottomOf="@+id/data_fav"
-                app:srcCompat="@android:drawable/ic_lock_lock" />
+                app:srcCompat="@drawable/ic_place_24px" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/floatEmail"
@@ -128,7 +137,7 @@
                 app:fabSize="mini"
                 app:layout_constraintStart_toEndOf="@+id/d_nom"
                 app:layout_constraintTop_toBottomOf="@+id/data_fav"
-                app:srcCompat="@android:drawable/ic_lock_lock" />
+                app:srcCompat="@drawable/ic_email_24px" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/floatTelephone"
@@ -137,13 +146,13 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="121dp"
-                android:layout_marginRight="128dp"
+                android:layout_marginRight="100dp"
                 android:clickable="true"
                 app:backgroundTint="@color/colorPrimary"
                 app:fabSize="mini"
                 app:layout_constraintStart_toEndOf="@+id/d_nom"
                 app:layout_constraintTop_toBottomOf="@+id/data_fav"
-                app:srcCompat="@android:drawable/ic_lock_lock" />
+                app:srcCompat="@drawable/ic_call_24px" />
 
             <TextView
                 android:id="@+id/d_email"
@@ -210,3 +219,5 @@
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!-- Front-End Menzo Korchit -->

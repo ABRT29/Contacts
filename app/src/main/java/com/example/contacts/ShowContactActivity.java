@@ -72,20 +72,8 @@ public class ShowContactActivity extends AppCompatActivity {
             }
         });
 
-
         fillData(id);
-
-
-        try {
-            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-            Bitmap bitmap = barcodeEncoder.encodeBitmap("content", BarcodeFormat.QR_CODE, 400, 400);
-            ImageView imageViewQrCode = (ImageView) findViewById(R.id.qrCode);
-            imageViewQrCode.setImageBitmap(bitmap);
-        } catch(Exception e) {
-        }
-
-
-
+        CreateQrCode(id);
     }
 
 
@@ -125,6 +113,26 @@ public class ShowContactActivity extends AppCompatActivity {
         String email = db.emailContact(id);
         TextView d_email = findViewById(R.id.d_email);
         d_email.setText(email);
+
+    }
+
+
+    public void CreateQrCode(Long id){
+
+        String prenom = db.prenomContact(id);
+        String nom = db.prenomContact(id);
+        String telephone = db.telephoneContact(id);
+
+
+        String dataContact = "Nom : " + nom + "\nPrenom :" + prenom + "\nTelephone :" + telephone;
+
+        try {
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            Bitmap bitmap = barcodeEncoder.encodeBitmap(dataContact, BarcodeFormat.QR_CODE, 600, 600);
+            ImageView imageViewQrCode = (ImageView) findViewById(R.id.qrCode);
+            imageViewQrCode.setImageBitmap(bitmap);
+        } catch(Exception e) {
+        }
 
     }
 
