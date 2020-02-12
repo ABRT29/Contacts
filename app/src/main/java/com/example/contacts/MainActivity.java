@@ -35,6 +35,9 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
+
+
+
 public class MainActivity extends AppCompatActivity {
 
     private ContactDbAdapter db;
@@ -178,9 +181,10 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_ReadQRCode) {
-            Intent mediaChooser =  new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+           Intent mediaChooser =  new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(mediaChooser, 1);
-        }
+
+         }
 
         return super.onOptionsItemSelected(item);
     }
@@ -240,4 +244,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /////////////////////////////////////////////
+
+    public void fillDataFav() {
+        Cursor c = db.fetchContactsFavoris();
+        startManagingCursor(c);
+
+        final ListView list_view_contacts = (ListView) findViewById(R.id.list_view_contacts);
+
+
+        String[] from = new String[] { ContactDbAdapter.KEY_PRENOM, ContactDbAdapter.KEY_NOM };
+        int[] to = new int[] { R.id.text1, R.id.text2 };
+
+        SimpleCursorAdapter contacts =
+                new SimpleCursorAdapter(this, R.layout.contacts_row, c, from, to, 0);
+        list_view_contacts.setAdapter(contacts);
+    }
+
+     ///////////////////////////////////////////////
 }

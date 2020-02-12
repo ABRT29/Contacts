@@ -46,6 +46,7 @@ public class ContactDbAdapter {
 
     public static final String KEY_TELEPHONE = "new_telephone";
     public static final String KEY_EMAIL = "new_email";
+    public static final String KEY_FAVORIS = "new_favoris" ;
 
 
 
@@ -59,7 +60,8 @@ public class ContactDbAdapter {
      */
     private static final String DATABASE_CREATE =
             "create table contact (_id integer primary key autoincrement, "
-                    + "new_nom text not null, new_prenom text not null, new_adresse text not null, new_complement text not null, new_codepostale text not null, new_ville text not null, new_telephone text not null, new_email text not null);";
+                    + "new_nom text not null, new_prenom text not null, new_adresse text not null, new_complement text not null, new_codepostale text not null, new_ville text not null, new_telephone text not null, new_email text not null, new_favoris INTEGER DEFAULT 0 );";
+
 
     private static final String DATABASE_NAME = "contacts";
     private static final String DATABASE_TABLE = "contact";
@@ -140,8 +142,11 @@ public class ContactDbAdapter {
         initialValues.put(KEY_TELEPHONE, new_telephone);
         initialValues.put(KEY_EMAIL, new_email);
 
+
         return mDb.insert(DATABASE_TABLE, null, initialValues);
     }
+
+
 
     /**
      * Delete the note with the given rowId
@@ -171,6 +176,14 @@ public class ContactDbAdapter {
                 KEY_PRENOM }, null, null, null, null, KEY_PRENOM + " COLLATE NOCASE ASC, " + KEY_NOM + " COLLATE NOCASE ASC ");
     }
 
+    //////////////////////////////////////////////
+
+    public Cursor fetchContactsFavoris() {
+
+        return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_NOM,
+                KEY_PRENOM },  KEY_ROWID + "=" + 1, null, null, null, KEY_PRENOM + " COLLATE NOCASE ASC, " + KEY_NOM + " COLLATE NOCASE ASC ");
+    }
+    //////////////////////////////////////////////
     /**
      * Return a Cursor positioned at the note that matches the given rowId
      *
@@ -183,7 +196,7 @@ public class ContactDbAdapter {
         Cursor mCursor =
 
                 mDb.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,
-                                KEY_NOM, KEY_PRENOM, KEY_ADRESSE, KEY_COMPLEMENT, KEY_CODEPOSTALE, KEY_VILLE, KEY_TELEPHONE, KEY_EMAIL}, KEY_ROWID + "=" + rowId, null,
+                                KEY_NOM, KEY_PRENOM, KEY_ADRESSE, KEY_COMPLEMENT, KEY_CODEPOSTALE, KEY_VILLE, KEY_TELEPHONE, KEY_EMAIL, KEY_FAVORIS}, KEY_ROWID + "=" + rowId, null,
                         null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -215,6 +228,34 @@ public class ContactDbAdapter {
 
         return mDb.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
     }
+
+    /////////////////////////////////////////////////////////////
+    public boolean updateFavoris(long rowId,Integer new_favoris) {
+        ContentValues args = new ContentValues();
+        args.put(KEY_FAVORIS, new_favoris);
+
+
+        return mDb.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
+    }
+
+
+    public Integer getFavoris (long rowId) throws SQLException {
+
+        Cursor mCursor =
+
+                mDb.query(true, DATABASE_TABLE, new String[] { KEY_FAVORIS}, KEY_ROWID + "=" + rowId, null,
+                        null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+
+        int int_fav = mCursor.getInt(mCursor.getColumnIndex("new_favoris"));
+
+        return int_fav;
+
+    }
+
+    ////////////////////////////////////////////////////////////
 
     public String prenomContact(long rowId) throws SQLException {
 
