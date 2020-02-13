@@ -4,7 +4,7 @@
     package="com.example.contacts">
 
     <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
-
+    <permission android:name="android.permission.CAMERA"/>
 
     <application
         android:allowBackup="true"
@@ -13,6 +13,8 @@
         android:roundIcon="@mipmap/contacts_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".QRCodeActivity"></activity>
+        <activity android:name=".UpdateContactActivity" />
         <activity android:name=".ShowContactActivity" />
         <activity android:name=".CreateContactActivity" />
         <activity
@@ -25,6 +27,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="barcode" />
     </application>
 
 </manifest>

@@ -1,38 +1,38 @@
 package com.example.contacts;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
-import com.journeyapps.barcodescanner.BarcodeEncoder;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import android.provider.MediaStore;
 import android.view.ContextMenu;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+
+    /**
+     * RESTE A FAIRE !!
+     *
+     * Favoris (BDD, TAB LAYOUT, ETC..)
+     *
+     * Scanner QR
+     *
+     * Orientation page createContact
+     *
+     * Modifier contact
+     *
+     *
+     */
 
     private ContactDbAdapter db;
 
@@ -66,12 +66,13 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 /**
-                 * permet de faire passer l'ID de cette activité (MainActivity) vers l'activité ShowContactActivity
+                 * permet de faire passer l'ID de cette activité (MainActivity) vers une autre activité
                  */
-                Intent i = new Intent(MainActivity.this, ShowContactActivity.class);
-                i.putExtra("Id", id);
+                Intent i = new Intent(MainActivity.this,ShowContactActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putLong("Id", id);
+                i.putExtras(bundle);
                 startActivity(i);
-
             }
         });
 
@@ -103,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         menu.add(0, v.getId(), 0, "Envoyer un SMS");
         menu.add(0, v.getId(), 0, "Envoyer un Email");
         menu.add(0, v.getId(), 0, "Voir l'adresse du contact");
+        menu.add(0, v.getId(), 0, "Modifier le contact");
         menu.add(0, v.getId(), 0, "Supprimer le contact");
     }
 
@@ -145,6 +147,12 @@ public class MainActivity extends AppCompatActivity {
 
         if (item.getTitle() == "Voir l'adresse du contact"){
             actions.map();
+        }
+
+        if (item.getTitle() == "Modifier le contact"){
+            Intent y = new Intent(MainActivity.this, UpdateContactActivity.class);
+            y.putExtra("id", id);
+            startActivity(y);
         }
         return true;
     }
@@ -203,6 +211,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void fillData() {
         Cursor c = db.fetchAllContacts();
+        startManagingCursor(c);
+
+        final ListView list_view_contacts = (ListView) findViewById(R.id.list_view_contacts);
+
+
+        String[] from = new String[] { ContactDbAdapter.KEY_PRENOM, ContactDbAdapter.KEY_NOM };
+        int[] to = new int[] { R.id.text1, R.id.text2 };
+
+        SimpleCursorAdapter contacts =
+                new SimpleCursorAdapter(this, R.layout.contacts_row, c, from, to, 0);
+        list_view_contacts.setAdapter(contacts);
+    }
+
+    public void fillDataFav() {
+        Cursor c = db.fetchContactsFavoris();
         startManagingCursor(c);
 
         final ListView list_view_contacts = (ListView) findViewById(R.id.list_view_contacts);

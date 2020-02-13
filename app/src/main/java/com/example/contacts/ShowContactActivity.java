@@ -16,6 +16,8 @@ import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -30,13 +32,16 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 public class ShowContactActivity extends AppCompatActivity {
 
     private ContactDbAdapter db;
+    private Long id;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_contact);
 
-        final Long id = getIntent().getExtras().getLong("Id");
+        Bundle bundle = getIntent().getExtras();
+        this.id = bundle.getLong("Id");
 
         final ActionsContacts actions = new ActionsContacts(id, this);
 
@@ -72,8 +77,29 @@ public class ShowContactActivity extends AppCompatActivity {
             }
         });
 
+        final Button button = (Button) findViewById(R.id.updateContact);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent y = new Intent(ShowContactActivity.this, UpdateContactActivity.class);
+                y.putExtra("id", id);
+                startActivity(y);
+            }
+        });
+
+
         fillData(id);
         CreateQrCode(id);
+
+
+        GetFavoris();
+
+        final CheckBox data_fav = (CheckBox) findViewById(R.id.data_fav);
+        data_fav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SetFavoris();
+            }
+        });
     }
 
 
@@ -137,6 +163,38 @@ public class ShowContactActivity extends AppCompatActivity {
     }
 
 
+    public void GetFavoris() {
+        Bundle bundle = getIntent().getExtras();
+        this.id = bundle.getLong("Id");
+
+        Integer favoris = db.getFavoris(id);
+
+        if(favoris == 1)
+        {
+            CheckBox data_fav = findViewById(R.id.data_fav);
+            data_fav.setChecked(!data_fav.isChecked());
+        }
+
+    }
+
+    public void SetFavoris() {
+        Bundle bundle = getIntent().getExtras();
+        this.id = bundle.getLong("Id");
+
+        Integer favoris = db.getFavoris(id);
+
+        if (favoris == 0)
+        {
+            favoris=1;
+            db.updateFavoris(id,favoris);
+        }
+        else
+        {
+            favoris=0;
+            db.updateFavoris(id,favoris);
+        }
+
+    }
 
 
 
