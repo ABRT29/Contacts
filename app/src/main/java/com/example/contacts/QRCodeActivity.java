@@ -110,8 +110,11 @@ public class QRCodeActivity extends AppCompatActivity {
                          * TEST
                          *
                          */
-                        Intent intent = new Intent(QRCodeActivity.this, CreateContactActivity.class);
-                        startActivity(intent);
+                        Intent i = new Intent(QRCodeActivity.this, CreateContactActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("token", token);
+                        i.putExtras(bundle);
+                        startActivity(i);
 
                         new Thread(new Runnable() {
                             public void run() {
@@ -122,7 +125,6 @@ public class QRCodeActivity extends AppCompatActivity {
                                         tokenanterior = "";
                                     }
                                 } catch (InterruptedException e) {
-                                    // TODO Auto-generated catch block
                                     Log.e("Error", "Waiting didnt work!!");
                                     e.printStackTrace();
                                 }

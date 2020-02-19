@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -77,7 +78,7 @@ public class ShowContactActivity extends AppCompatActivity {
             }
         });
 
-        final Button button = (Button) findViewById(R.id.updateContact);
+        final ImageButton button = (ImageButton) findViewById(R.id.updateContact);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent y = new Intent(ShowContactActivity.this, UpdateContactActivity.class);
