@@ -21,16 +21,22 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
-     * RESTE A FAIRE !!
      *
-     * Favoris (BDD, TAB LAYOUT, ETC..)
+     * Contacts
      *
-     * Scanner QR
+     * Aurélien BURET & Menzo KORCHIT
      *
+     * LP DIM FI
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     * 
+     * RESTE A FAIRE :
      * Orientation page createContact
-     *
-     * Modifier contact
-     *
      *
      */
 
@@ -65,9 +71,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                /**
-                 * permet de faire passer l'ID de cette activité (MainActivity) vers une autre activité
-                 */
                 Intent i = new Intent(MainActivity.this,ShowContactActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putLong("Id", id);
@@ -81,10 +84,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-    /**
-     * Redirection vers l'activité : CreateContact
-     */
     public void openActivityCreateContact(){
         Intent intent = new Intent(this, CreateContactActivity.class);
         startActivity(intent);
@@ -96,10 +95,7 @@ public class MainActivity extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
 
-        /** appeller sms email localiser supprimer */
-        /**
-         * Menu contextuel qui seront affichés lors d'un appui long
-         */
+
         menu.add(0, v.getId(), 0, "Appeler");
         menu.add(0, v.getId(), 0, "Envoyer un SMS");
         menu.add(0, v.getId(), 0, "Envoyer un Email");
@@ -111,9 +107,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
 
-        /**
-         * Récupération de l'ID en fonction de la position de la ligne dans la listView
-         */
+
         final ListView list_view_contacts = (ListView) findViewById(R.id.list_view_contacts);
 
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
@@ -122,9 +116,7 @@ public class MainActivity extends AppCompatActivity {
         final long id = SelectedCursor.getLong(SelectedCursor.getColumnIndex("_id"));
 
 
-        /**
-         * Actions menu contextuel
-         */
+
 
         ActionsContacts actions = new ActionsContacts(id, this);
 
@@ -179,13 +171,15 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
+        if (id == R.id.action_ContactsFavoris) {
+            fillDataFav();
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
 
-    /**
-     * POP UP ALERT DELETE
-     */
+
     public void alertDelete(final Long SelectedId){
         AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
         alertDialog.setTitle("Suppression du contact");
@@ -224,6 +218,7 @@ public class MainActivity extends AppCompatActivity {
                 new SimpleCursorAdapter(this, R.layout.contacts_row, c, from, to, 0);
         list_view_contacts.setAdapter(contacts);
     }
+
 
     public void fillDataFav() {
         Cursor c = db.fetchContactsFavoris();

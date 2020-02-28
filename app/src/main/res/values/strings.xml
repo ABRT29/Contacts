@@ -114,4 +114,12 @@
     <string name="updateContact">Modifier le contact</string>
     <string name="textUpdateContact">Modifier le contact</string>
     <string name="ButtonUpdate">Modifier le contact</string>
+    <string name="dev"><![CDATA[Aurélien BURET & Menzo KORCHIT]]></string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="main">main</string>
+    <string name="fav">fav</string>
+    <string name="nom">nom</string>
+    <string name="ContactsFavoris">Contacts favoris</string>
 </resources>

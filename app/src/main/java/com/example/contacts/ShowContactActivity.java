@@ -147,11 +147,21 @@ public class ShowContactActivity extends AppCompatActivity {
     public void CreateQrCode(Long id){
 
         String prenom = db.prenomContact(id);
-        String nom = db.prenomContact(id);
+        String nom = db.nomContact(id);
+        String adresse = db.adresseContact(id);
+        String complement = db.complementContact(id);
+        String codepostale = db.cpContact(id);
+        String ville = db.villeContact(id);
         String telephone = db.telephoneContact(id);
+        String email = db.emailContact(id);
 
 
-        String dataContact = "Nom : " + nom + "\nPrenom :" + prenom + "\nTelephone :" + telephone;
+        /**
+         * EXEMPLE token QRCODE :
+         *
+         *    aurelien;buret;38 rue de la paix;Appartement 123;59000;Paris;0102030405;aurelien@buret.fr
+         */
+        String dataContact = prenom + ";" + nom + ";" + adresse + ";" + complement + ";" + codepostale + ";" + ville + ";" + telephone + ";" + email;
 
         try {
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();

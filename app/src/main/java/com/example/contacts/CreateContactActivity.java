@@ -11,6 +11,8 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toolbar;
 
+import com.google.zxing.common.StringUtils;
+
 import java.util.StringTokenizer;
 
 
@@ -29,11 +31,18 @@ public class CreateContactActivity extends AppCompatActivity {
         /**
          * Récupération du token si contact importé depuis scan QR Code
          *
-         * IMPOSSIBLE DE CREER UN CONTACT NORMAL CAR LE BUNDLE CASSE TOUT CAR OBLIGATOIRE....
+         *  SI bundle est différent de null cela veut dire que l'ajout d'un contact se fait
+         *  depuis un scan QR Code
          */
         Bundle bundle = getIntent().getExtras();
-        this.token = bundle.getString("token");
-        if (this.token != null) {fillData();}
+
+        if(bundle!= null) {
+            this.token = bundle.getString("token");
+            if (this.token != null) {
+                fillData();
+            }
+        }
+
 
     }
 
@@ -84,13 +93,22 @@ public class CreateContactActivity extends AppCompatActivity {
 
     public void fillData(){
 
-        StringTokenizer tokens = new StringTokenizer(this.token, ";");
-        String prenom = tokens.nextToken();
-        String nom = tokens.nextToken();
-        String telephone = tokens.nextToken();
-        String email = tokens.nextToken();
+
+        //StringTokenizer tokens = new StringTokenizer(this.token, ";");
 
 
+        String currentString = "contacts;"+this.token+";contacts;";
+        String[] separated = currentString.split(";");
+
+
+        String prenom = separated[1];
+        String nom = separated[2];
+        String adresse = separated[3];
+        String complement = separated[4];
+        String codepostale = separated[5];
+        String ville = separated[6];
+        String telephone = separated[7];
+        String email = separated[8];
 
         EditText new_prenom = findViewById(R.id.new_prenom);
         new_prenom.setText(prenom);
@@ -98,15 +116,24 @@ public class CreateContactActivity extends AppCompatActivity {
         EditText new_nom = findViewById(R.id.new_nom);
         new_nom.setText(nom);
 
+        EditText new_adresse = findViewById(R.id.new_adresse);
+        new_adresse.setText(adresse);
+
+        EditText new_complement = findViewById(R.id.new_complement);
+        new_complement.setText(complement);
+
+        EditText new_codepostale = findViewById(R.id.new_codepostale);
+        new_codepostale.setText(codepostale);
+
+        EditText new_ville = findViewById(R.id.new_ville);
+        new_ville.setText(ville);
+
         EditText new_telephone = findViewById(R.id.new_telephone);
         new_telephone.setText(telephone);
 
-
-        /**
-         * si champs vide BUG.....
-         */
         EditText new_email = findViewById(R.id.new_email);
         new_email.setText(email);
+
     }
 
 }
